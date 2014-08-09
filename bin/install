@@ -34,7 +34,7 @@ ln -s /etc/httpd/conf/magic $OPENSHIFT_RUBY_DIR/etc/magic
 echo
 
 npm cache clean -f
-npm install n
+npm install -g n
 n stable
 
 echo "npm install fibers@1.0.1"
