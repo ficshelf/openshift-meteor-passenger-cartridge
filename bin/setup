@@ -24,14 +24,14 @@ echo -n "passenger" > ${OPENSHIFT_RUBY_DIR}/env/OPENSHIFT_RUBY_RUNNING_SERVER
 
 
 source "${OPENSHIFT_RUBY_DIR}/lib/jruby"
-jruby-install
+#jruby-install
 
 
 cp ${OPENSHIFT_RUBY_DIR}/versions/shared/etc/conf.d/performance.conf.erb ${OPENSHIFT_RUBY_DIR}/conf/performance.conf.erb
 cp ${OPENSHIFT_RUBY_DIR}/conf/performance.conf.erb ${OPENSHIFT_RUBY_DIR}/conf/performance.conf.erb.hidden
 
-cd $OPENSHIFT_HOMEDIR
-rm -r programs/server/node_modules/fibers    
-rm -r programs/server/node_modules/bcrypt                                                                                       
 
-npm -g install fibers@1.0.1                                                                                                        npm -g install bcrypt@0.7.7
+echo "npm -g install fibers@1.0.1"
+npm -g install fibers@1.0.1
+echo "npm -g install bcrypt@0.7.7"
+npm -g install bcrypt@0.7.7
