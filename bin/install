@@ -30,4 +30,14 @@ ln -s /etc/httpd/conf/magic $OPENSHIFT_RUBY_DIR/etc/magic
 #rm -r programs/server/node_modules/fibers    
 #rm -r programs/server/node_modules/bcrypt                                                                                       
 
+#meteor
+echo
 
+npm cache clean -f
+npm install n
+n stable
+
+echo "npm install fibers@1.0.1"
+npm install fibers@1.0.1
+echo "npm install bcrypt@0.7.7"
+npm install bcrypt@0.7.7

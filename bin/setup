@@ -31,7 +31,3 @@ cp ${OPENSHIFT_RUBY_DIR}/versions/shared/etc/conf.d/performance.conf.erb ${OPENS
 cp ${OPENSHIFT_RUBY_DIR}/conf/performance.conf.erb ${OPENSHIFT_RUBY_DIR}/conf/performance.conf.erb.hidden
 
 
-echo "npm install fibers@1.0.1"
-npm install fibers@1.0.1
-echo "npm install bcrypt@0.7.7"
-npm install bcrypt@0.7.7
