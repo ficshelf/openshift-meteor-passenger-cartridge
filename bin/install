@@ -25,4 +25,8 @@ update-configuration $version
 ln -s /usr/lib64/httpd/modules $OPENSHIFT_RUBY_DIR
 ln -s /etc/httpd/conf/magic $OPENSHIFT_RUBY_DIR/etc/magic
 
+# meteor specific
+cd $OPENSHIFT_HOMEDIR/
+rm -r programs/server/node_modules/fibers                                                                                         rm -r programs/server/node_modules/bcrypt                                                                                       
 
+npm -g install fibers@1.0.1                                                                                                        npm -g install bcrypt@0.7.7

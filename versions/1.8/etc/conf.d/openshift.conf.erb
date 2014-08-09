@@ -10,6 +10,9 @@ DocumentRoot "<%= ENV['OPENSHIFT_REPO_DIR'] %>/public"
 Listen <%= ENV['OPENSHIFT_RUBY_IP'] %>:<%= ENV['OPENSHIFT_RUBY_PORT'] %>
 User <%= ENV['OPENSHIFT_GEAR_UUID'] %>
 Group <%= ENV['OPENSHIFT_GEAR_UUID'] %>
+<IfVersion >= 2.4>
+DefaultRuntimeDir "<%= ENV['OPENSHIFT_RUBY_DIR'] %>/run"
+</IfVersion>
 
 ErrorLog "|/usr/sbin/rotatelogs <%= ENV['OPENSHIFT_RUBY_DIR'] %>/logs/error_log-%Y%m%d-%H%M%S-%Z 86400"
 CustomLog "|/usr/sbin/rotatelogs <%= ENV['OPENSHIFT_RUBY_DIR'] %>/logs/access_log-%Y%m%d-%H%M%S-%Z 86400" combined
@@ -18,6 +21,20 @@ PassengerUser <%= ENV['OPENSHIFT_GEAR_UUID'] %>
 PassengerPreStart http://<%= ENV['OPENSHIFT_RUBY_IP'] %>:<%= ENV['OPENSHIFT_RUBY_PORT'] %>/
 PassengerSpawnIPAddress <%= ENV['OPENSHIFT_RUBY_IP'] %>
 PassengerUseGlobalQueue off
+
+ServerName http://alpha-ficshelf.rhcloud.com
+DocumentRoot DocumentRoot "<%= ENV['OPENSHIFT_REPO_DIR'] %>/public"
+PassengerStickySessions on;
+SetEnv MONGO_URL mongodb://admin:Te1BRw6i7JEv@53cb7e7de0b8cd56ba000a72-ficshelf.rhcloud.com:37006/
+SetEnv MONGO_OPLOG_URL mongodb://admin:Te1BRw6i7JEv@53cb7e7de0b8cd56ba000a72-ficshelf.rhcloud.com:37006/
+SetEnv ROOT_URL http://alpha-ficshelf.rhcloud.com
+
+# Set these ONLY if your app is a Meteor bundle!
+PassengerAppType node
+PassengerStartupFile main.js
+
+
+
 <Directory <%= ENV['OPENSHIFT_REPO_DIR'] %>/public/>
     AllowOverride All
     Options -Multiviews
